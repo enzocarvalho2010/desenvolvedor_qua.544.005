@@ -1,9 +1,16 @@
+import os
 li = lambda: os.system('cls' if os.name == 'nt' else 'clear')
 
-def fi(x):
-    fibonacci = []
+def fi():
+    a = 0
+    b = 1
+    x = int(input('Insira o número de termos: '))
     if x == 0:
-        print(f'O termo é 0')
-    elif x == 1:
-        for n in fibonacci:
-            print(x)
+        print(0)
+    else:
+        for i in range(x):
+            c = a+b
+            a=b 
+            b=c
+            print(f'{a}')
+    
