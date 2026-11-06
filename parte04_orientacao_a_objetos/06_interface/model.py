@@ -62,16 +62,16 @@ class Conta(IConta):
     # métodos da interface
     def consultar(self):
         print(f'{'-'*20} Dados da conta {'-'*20}')
-        print(f'Nome do titular: {self.__titular}')
-        print(f'CPF do titular: {self.__cpf}')
-        print(f'Agência: {self.__agencia}')
-        print(f'Conta: {self.__numero}')
-        print(f'Saldo: {self.__saldo:.2f} R$')
+        print(f'Nome do titular: {self.titular}')
+        print(f'CPF do titular: {self.cpf}')
+        print(f'Agência: {self.agencia}')
+        print(f'Conta: {self.numero}')
+        print(f'Saldo: {self.saldo:.2f} R$')
 
     def depositar(self, valor):
-        self.__saldo += valor
+        self.saldo += valor
         return self.__saldo
     
     def sacar(self, valor):
-        self.__saldo += valor
+        self.saldo -= valor
         return self.__saldo
