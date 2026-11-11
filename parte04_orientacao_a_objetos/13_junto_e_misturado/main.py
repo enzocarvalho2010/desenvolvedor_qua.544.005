@@ -4,36 +4,50 @@ from model import Pessoa ,ContaCorrente , ContaPoupanca
 
 def li():
     os.system('cls' if os.name == 'nt' else 'clear')
-#TODO terminar função operacoes()
+    
 def operacoes(agencia,conta,user):
     if conta == '1':
         conta = ContaCorrente(agencia=agencia
                               ,numero=f'{random.randint(10000,99999)}-1'
+                              ,tipo='Conta Corrente'
                               ,saldo=0.0
                               ,titular=user
                               ,taxa=0.01)
     else:
         conta = ContaPoupanca(agencia=agencia
                               ,numero=f'{random.randint(10000,99999)}-2'
+                              ,tipo='Conta Poupança'
                               ,saldo=0.0
                               ,titular=user
-                              ,juros=0.01)
+                              ,juros=0.1)
     while True:
         print('0. Sair do pogramia')
         print('1. Consultar dados')
         print('2. Depositar dinheiro')
-        print('3. sacar dinheiro')
+        print('3. Sacar dinheiro')
         op = input('Operação desejada: ').strip()
         match op:
             case '0':
                 print('Pogramia encerrado.')
                 break
             case '1':
-                pass
+                conta.consultar()
+                continue
             case '2':
-                pass
+                valor = float(input('Insira o valor do depósito: ').replace(',','.'))
+                saldo = conta.depositar(valor)
+                li()
+                print(f'Depósito concluído! Saldo atual: {saldo:.2f}')
+                continue
             case '3':
-                pass
+                valor = float(input('Insira o valor que deseja sacar: ').replace(',','.'))
+                if valor < conta.saldo:
+                    saldo = conta.sacar(valor)
+                    li()
+                    print(f'Saque concluído! Saldo atual: {saldo:.2f}')
+                else:
+                    print('Saque não perimitido :(')
+                continue
             case _:
                 print('Opção inválida :(')
                 continue
