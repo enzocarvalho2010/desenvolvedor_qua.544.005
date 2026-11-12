@@ -3,7 +3,7 @@ from datetime import date
 
 def main():
     hoje = date.today().strftime('%d/%m/%Y')
-    auto.PAUSE = 1
+    auto.PAUSE = 0.75
 
     auto.hotkey('win','r')
     auto.write('cmd')
